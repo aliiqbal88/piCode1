@@ -30,7 +30,7 @@ while 1:
     for i in range(configData['Number of Devices']):
             # if configData['Device Data'][i]['devType'] == 'i':
             try:
-                invMod.append(minimalmodbus.Instrument('COM' + str(configData['Device Data'][i]['comNum']), configData['Device Data'][i]['address'], 'rtu', True))
+                invMod.append(minimalmodbus.Instrument('/dev/ttyUSB0', configData['Device Data'][i]['address'], 'rtu', True))
                 invMod[-1].serial.timeout = 1
                 invMod[-1].serial.baudrate = 9600
 
