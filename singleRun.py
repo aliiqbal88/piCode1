@@ -480,7 +480,8 @@ for valu in inverterData:
 inverterData.append({"wPktSuccess": not wPktProblem, "iPktSuccess": not iPktProblem})
 
 inverterData_json = json.dumps(inverterData,indent=4)
-print(inverterData_json)
+print(inverterData[-1])
+#print(inverterData_json)
 
 
 #print(wPktProblem)
