@@ -1,0 +1,20 @@
+{
+    "Number of Devices": 3,
+    "Device Data": [
+        {
+            "address": 1,
+            "devType": "w",
+            "comNum": 4
+        },
+        {
+            "address": 2,
+            "devType": "i",
+            "comNum": 4
+        },
+        {
+            "address": 3,
+            "devType": "i",
+            "comNum": 4
+        }
+    ]
+}
