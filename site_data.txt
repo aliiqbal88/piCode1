@@ -1,20 +1,95 @@
 {
-    "Number of Devices": 3,
+    "Number of Devices": 15,
     "Device Data": [
         {
-            "address": 1,
+            "address": 15,
             "devType": "w",
             "comNum": 4
         },
+
+        {
+            "address": 1,
+            "devType": "i",
+            "comNum": 4
+        },
+
         {
             "address": 2,
             "devType": "i",
             "comNum": 4
         },
+
         {
             "address": 3,
             "devType": "i",
             "comNum": 4
+        },
+
+        {
+            "address": 4,
+            "devType": "i",
+            "comNum": 4
+        },
+
+        {
+            "address": 5,
+            "devType": "i",
+            "comNum": 4
+        },
+
+        {
+            "address": 6,
+            "devType": "i",
+            "comNum": 4
+        },
+
+        {
+            "address": 7,
+            "devType": "i",
+            "comNum": 4
+        },
+
+        {
+            "address": 8,
+            "devType": "i",
+            "comNum": 4
+        },
+
+        {
+            "address": 9,
+            "devType": "i",
+            "comNum": 4
+        },
+
+        {
+            "address": 10,
+            "devType": "i",
+            "comNum": 4
+        },
+
+        {
+            "address": 11,
+            "devType": "i",
+            "comNum": 4
+        },
+
+        {
+            "address": 12,
+            "devType": "i",
+            "comNum": 4
+        },
+
+        {
+            "address": 13,
+            "devType": "i",
+            "comNum": 4
+        },
+
+        {
+            "address": 14,
+            "devType": "i",
+            "comNum": 4
         }
+
     ]
 }
