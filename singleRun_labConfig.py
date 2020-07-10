@@ -8,7 +8,7 @@ import time
 #timerCount = 100
 #timerArray = range(timerCount)
 # while 1:
-with open('site_data.txt') as readFile:
+with open('data.txt') as readFile:
     configData = json.load(readFile)
 
 print(configData)
