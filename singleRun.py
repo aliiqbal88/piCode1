@@ -68,11 +68,20 @@ for i in range(configData['Number of Devices']):
                 })
 
         try:
-            if configData['Device Data'][i]['devType'] == 'i':
-                invCode4_1 = invMod[-1].read_registers(5000, 49, 4)
-                invCode4_2 = invMod[-1].read_registers(5112, 35, 4)
-            else:
-                wthCode = invMod[-1].read_registers(0,43,3)
+            for tries in range(4):
+                try:
+                    if configData['Device Data'][i]['devType'] == 'i':
+                        invCode4_1 = invMod[-1].read_registers(5000, 49, 4)
+                        invCode4_2 = invMod[-1].read_registers(5112, 35, 4)
+                    else:
+                        wthCode = invMod[-1].read_registers(0,43,3)
+                except KeyError as e:
+                    if tries < 3:
+                        continue
+                    else:
+                        raise
+                break
+
         except:
             errorCode['code'].append('Address Problem')
             errorCode['Problem ModBus Address'].append(configData['Device Data'][i]['address'])
