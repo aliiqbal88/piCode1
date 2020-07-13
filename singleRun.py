@@ -67,26 +67,31 @@ for i in range(configData['Number of Devices']):
                     "Raw Data": []
                 })
 
-        try:
-            for tries in range(6):
-                try:
-                    time.sleep(0.5)  # delay before request
-                    print("device address: " + configData["Device Data"][i]['address'] + "try num: " + tries)
-                    if configData['Device Data'][i]['devType'] == 'i':
-                        invCode4_1 = invMod[-1].read_registers(5000, 49, 4)
-                        invCode4_2 = invMod[-1].read_registers(5112, 35, 4)
-                    else:
-                        wthCode = invMod[-1].read_registers(0,43,3)
-                except KeyError as e:
-                    if tries < 5:
-                        
-                        continue
-                    else:
-                        raise
-                
-                break
+        ## RETRY ALGO
+        for tries in range(6):
 
-        except:
+            time.sleep(0.5)  # delay before request
+
+            try:   
+                print("device address: " + configData["Device Data"][i]['address'] + "try num: " + tries)
+                if configData['Device Data'][i]['devType'] == 'i':
+                    invCode4_1 = invMod[-1].read_registers(5000, 49, 4)
+                    invCode4_2 = invMod[-1].read_registers(5112, 35, 4)
+                else:
+                    wthCode = invMod[-1].read_registers(0,43,3)
+            except:
+                print("continued")   
+                continue
+            else:
+                if configData['Device Data'][i]['devType'] == 'i':
+                    inverterData[-1]['IModBus'] = 'success'
+                    inverterData[-1]['Raw Data'] = (invCode4_1 + invCode4_2)
+                else:
+                    inverterData[-1]['WModBus'] = 'success'
+                    inverterData[-1]['Raw Data'] = wthCode
+                break
+            
+        else:
             errorCode['code'].append('Address Problem')
             errorCode['Problem ModBus Address'].append(configData['Device Data'][i]['address'])
             if configData['Device Data'][i]['devType'] == 'i':
@@ -94,13 +99,10 @@ for i in range(configData['Number of Devices']):
             else:
                 inverterData[-1]['WModBus'] = 'failed'
             inverterData[-1]['Raw Data'] = []
-        else:
-            if configData['Device Data'][i]['devType'] == 'i':
-                inverterData[-1]['IModBus'] = 'success'
-                inverterData[-1]['Raw Data'] = (invCode4_1 + invCode4_2)
-            else:
-                inverterData[-1]['WModBus'] = 'success'
-                inverterData[-1]['Raw Data'] = wthCode
+            
+                
+
+
 
         if configData['Device Data'][i]['devType'] == 'i':
             inverterData[-1]['IcurrentDate'] = currentDate
