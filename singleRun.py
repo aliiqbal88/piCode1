@@ -68,16 +68,17 @@ for i in range(configData['Number of Devices']):
                 })
 
         try:
-            for tries in range(4):
+            for tries in range(6):
                 try:
-                    time.sleep(0.3)  # delay before request
+                    time.sleep(0.5)  # delay before request
+                    print("device address: " + configData["Device Data"][i]['address'] + "try num: " + tries)
                     if configData['Device Data'][i]['devType'] == 'i':
                         invCode4_1 = invMod[-1].read_registers(5000, 49, 4)
                         invCode4_2 = invMod[-1].read_registers(5112, 35, 4)
                     else:
                         wthCode = invMod[-1].read_registers(0,43,3)
                 except KeyError as e:
-                    if tries < 3:
+                    if tries < 5:
                         
                         continue
                     else:
