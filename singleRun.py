@@ -73,7 +73,7 @@ for i in range(configData['Number of Devices']):
             time.sleep(0.5)  # delay before request
 
             try:   
-                print("device address: " + configData["Device Data"][i]['address'] + "try num: " + tries)
+                print("device address: " + configData["Device Data"][i]['address'] + "-try num: " + tries)
                 if configData['Device Data'][i]['devType'] == 'i':
                     invCode4_1 = invMod[-1].read_registers(5000, 49, 4)
                     invCode4_2 = invMod[-1].read_registers(5112, 35, 4)
