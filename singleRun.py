@@ -8,6 +8,8 @@ import time
 #timerCount = 100
 #timerArray = range(timerCount)
 # while 1:
+
+print("why!!!!")
 with open('site_data.txt') as readFile:
     configData = json.load(readFile)
 
@@ -29,6 +31,7 @@ currentTime = dateTimeObject.strftime("%H:%M:%S")
 
 for i in range(configData['Number of Devices']):
         # if configData['Device Data'][i]['devType'] == 'i':
+        print("add: " + str(i))
         try:
             invMod.append(minimalmodbus.Instrument('/dev/ttyUSB0', configData['Device Data'][i]['address'], 'rtu', True))
             invMod[-1].serial.timeout = 1
@@ -71,17 +74,19 @@ for i in range(configData['Number of Devices']):
             for tries in range(6):
                 try:
                     time.sleep(0.5)  # delay before request
-                    print("device address: " + configData["Device Data"][i]['address'] + "try num: " + tries)
+                    print("device address: " + str(configData["Device Data"][i]['address'])+ "try num: " + str(tries))
                     if configData['Device Data'][i]['devType'] == 'i':
                         invCode4_1 = invMod[-1].read_registers(5000, 49, 4)
                         invCode4_2 = invMod[-1].read_registers(5112, 35, 4)
                     else:
                         wthCode = invMod[-1].read_registers(0,43,3)
                 except KeyError as e:
+                    print("excepted")
                     if tries < 5:
-                        
+                        print("continued")
                         continue
                     else:
+                        print("raised")
                         raise
                 
                 break
