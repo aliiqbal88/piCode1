@@ -4,7 +4,7 @@ import requests
 from datetime import datetime
 import time
 
-#numTransmissions = 0
+num_retransmissions = 20
 #timerCount = 100
 #timerArray = range(timerCount)
 # while 1:
@@ -68,9 +68,9 @@ for i in range(configData['Number of Devices']):
                 })
 
         ## RETRY ALGO
-        for tries in range(6):
+        for tries in range(num_retransmissions):
 
-            time.sleep(0.5)  # delay before request
+            time.sleep(0.2)  # delay before request
 
             try:   
                 print("device address: " + str(configData["Device Data"][i]['address']) + "-try num: " + str(tries))
