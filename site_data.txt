@@ -1,12 +1,6 @@
 {
-    "Number of Devices": 15,
+    "Number of Devices": 13,
     "Device Data": [
-        {
-            "address": 15,
-            "devType": "w",
-            "comNum": 4
-        },
-
         {
             "address": 1,
             "devType": "i",
@@ -80,16 +74,9 @@
         },
 
         {
-            "address": 13,
-            "devType": "i",
-            "comNum": 4
-        },
-
-        {
             "address": 14,
             "devType": "i",
             "comNum": 4
-        }
-
+     	}
     ]
 }
